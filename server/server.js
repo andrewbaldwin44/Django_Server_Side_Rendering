@@ -1,0 +1,43 @@
+import http from "http";
+import express from "express";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import { buildInitialState } from "./utils";
+import render from "./render.jsx";
+
+const PORT = process.env.NODE_PORT || 3000;
+
+const app = express();
+const server = http.Server(app);
+
+app
+  .use(bodyParser.json())
+  .use(morgan("combined"))
+
+  .get("/", function(req, res) {
+    res.end("Render server here!");
+  })
+
+  .post("/render", function(req, res) {
+    try {
+      const url = req.body.url;
+
+      const initialState = buildInitialState(req.body);
+
+      const result = render(url, initialState);
+
+      res.json({
+        html: result.html,
+        finalState: result.finalState
+      });
+    } catch ({ message }) {
+      res.json({
+        status: 404,
+        message
+      });
+    }
+  });
+
+server.listen(PORT, () => {
+  console.log(`Render server listening at http://localhost:${3000}`);
+});
