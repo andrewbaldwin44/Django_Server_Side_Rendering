@@ -7,7 +7,8 @@
   "author": "Andrew Baldwin",
   "scripts": {
     "build": "babel server.js --out-file index-compiled.js",
-    "start": "nodemon --exec babel-node server.js"
+    "start:server": "nodemon --exec babel-node ./server/server.js",
+    "start:presentation": "webpack --config webpack.config.js --watch"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -18,6 +19,13 @@
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "nodemon": "^2.0.7"
+    "@babel/preset-react": "^7.12.13",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   }
 }
