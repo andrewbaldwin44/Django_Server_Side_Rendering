@@ -14,10 +14,6 @@ app
   .use(bodyParser.json())
   .use(morgan("combined"))
 
-  .get("/", function(req, res) {
-    res.end("Render server here!");
-  })
-
   .post("/render", function(req, res) {
     try {
       const url = req.body.url;
