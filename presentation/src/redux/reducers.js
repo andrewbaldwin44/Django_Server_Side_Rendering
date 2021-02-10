@@ -1,4 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
+function testReducer(state = {}) {
+  return state;
+}
 
-export default combineReducers({});
+export default combineReducers({ testReducer });

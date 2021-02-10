@@ -4,3 +4,4 @@
 **/.env
 **/venv
 dist
+yarn-error.log

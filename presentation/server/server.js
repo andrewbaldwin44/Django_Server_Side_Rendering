@@ -21,15 +21,17 @@ app
       const initialState = buildInitialState(req.body);
 
       const result = render(url, initialState);
+      console.log(result);
 
       res.json({
         html: result.html,
         finalState: result.finalState
       });
-    } catch ({ message }) {
+    } catch (error) {
+      console.log(error);
       res.json({
         status: 404,
-        message
+        error: error.message
       });
     }
   });
